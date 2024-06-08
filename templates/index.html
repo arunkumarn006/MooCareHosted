@@ -60,110 +60,6 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        #hr, #spo2, #status {
-            display: inline-block;
-            animation: fadeIn 0.6s;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
-        }
-
-        #hr, #spo2 {
-            color: #e74c3c;
-        }
-
-        #status {
-            color: #27ae60;
-        }
-
-        #hr.pulse, #spo2.pulse, #status.pulse {
-            animation: pulse 1s infinite;
-        }
-
-        .background-cow {
-            width: 300px;
-            opacity: 0.8;
-            margin-left: 20px;
-            animation: moveCow 20s linear infinite;
-        }
-
-        @keyframes moveCow {
-            0% { transform: translateX(0); }
-            50% { transform: translateX(-20px); }
-            100% { transform: translateX(0); }
-        }
-
-        footer {
-            position: absolute;
-            bottom: 20px;
-            width: 100%;
-            text-align: center;
-            font-size: 1em;
-            color: #666;<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Cow Health Monitor</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
-    <style>
-        body {
-            font-family: 'Roboto', sans-serif;
-            background: linear-gradient(135deg, #0072ff, #00c6ff);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            color: #333;
-            overflow: hidden;
-        }
-
-        .container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            z-index: 1;
-        }
-
-        .card {
-            background: rgba(255, 255, 255, 0.9);
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            transition: transform 0.3s;
-        }
-
-        .card:hover {
-            transform: translateY(-10px);
-        }
-
-        h1 {
-            color: #444;
-            font-size: 2.5em;
-            margin-bottom: 20px;
-        }
-
-        p {
-            font-size: 1.5em;
-            margin: 10px 0;
-        }
-
-        span {
-            font-weight: 700;
-            transition: all 0.3s ease-in-out;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
         #hr, #spo2, #status, #ecg {
             display: inline-block;
             animation: fadeIn 0.6s;
@@ -268,3 +164,5 @@
     <footer>
         &copy; 2024 Dr Ambedkar Institute Of Technology.
     </footer>
+</body>
+</html>

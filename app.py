@@ -38,7 +38,7 @@ def index():
         db.session.commit()
 
         print(f"Received Hr: {hr}, : spO2: {spo2}, status: {status}, ECG: {ecg}")  # Debugging print
-        socketio.emit('update', {'hr': hr, 'spo2': spo2, 'status':status}, 'ecg': ecg)
+        socketio.emit('update', {'hr': hr, 'spo2': spo2, 'status':status, 'ecg': ecg})
         return render_template('index.html', hr=hr, spo2=spo2,status=status, ecg=ecg)
     
     # Fetch the latest data from the database

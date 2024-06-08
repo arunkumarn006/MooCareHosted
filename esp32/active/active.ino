@@ -26,7 +26,7 @@ int8_t validHeartRate; // Heart rate validity
 const char* ssid = "moocare";
 const char* password = "12345678";
 
-const char* host = "192.168.159.68"; // IP address of your Flask server
+const char* host = "192.168.72.68"; // IP address of your Flask server
 const int httpPort = 5001; // Port of the Flask server
 
 void setup() {

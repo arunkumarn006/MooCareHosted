@@ -14,6 +14,7 @@ class Data(db.Model):
     hr = db.Column(db.String(50))
     spo2 = db.Column(db.String(50))
     status = db.Column(db.String(50))
+    ecg = db.Column(db.String(50))
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -21,7 +22,7 @@ def index():
         hr = request.form.get('hr')
         spo2 = request.form.get('spo2')
         status = request.form.get('status')
-        
+        ecg = request.form.get('ecg')
 
         # Store data in the database (replace the old record if it exists)
         existing_data = Data.query.first()
@@ -29,15 +30,16 @@ def index():
             existing_data.hr = hr
             existing_data.spo2 = spo2
             existing_data.status = status
+            existing_data.ecg = ecg
         else:
-            new_data = Data(hr=hr,spo2=spo2,status=status)
+            new_data = Data(hr=hr,spo2=spo2,status=status,ecg=ecg)
             db.session.add(new_data)
 
         db.session.commit()
 
-        print(f"Received Hr: {hr}, : spO2: {spo2}, status: {status}")  # Debugging print
-        socketio.emit('update', {'hr': hr, 'spo2': spo2, 'status':status})
-        return render_template('index.html', hr=hr, spo2=spo2,status=status)
+        print(f"Received Hr: {hr}, : spO2: {spo2}, status: {status}, ECG: {ecg}")  # Debugging print
+        socketio.emit('update', {'hr': hr, 'spo2': spo2, 'status':status}, 'ecg': ecg)
+        return render_template('index.html', hr=hr, spo2=spo2,status=status, ecg=ecg)
     
     # Fetch the latest data from the database
     latest_data = Data.query.first()
@@ -45,12 +47,14 @@ def index():
         hr = latest_data.hr
         spo2 = latest_data.spo2
         status = latest_data.status
+        ecg = latest_data.ecg
     else:
         hr = ""
         spo2 = ""
         status = ""
+        ecg = ""
     
-    return render_template('index.html', hr=hr, spo2=spo2, status=status)
+    return render_template('index.html', hr=hr, spo2=spo2, status=status, ecg=ecg)
 
 @socketio.on('connect')
 def handle_connect():
